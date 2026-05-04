@@ -76,19 +76,19 @@ function App() {
                 </div>
               </div>
 
-              {filteredStudents.length > 0 ? (
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
-                  {filteredStudents.map((student, index) => (
-                    <StudentCard
-                      key={student.id}
-                      student={student}
-                      onClick={() => handleStudentClick(student)}
-                      index={index}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="glass-card p-8 sm:p-12 md:p-16 rounded-xl md:rounded-2xl text-center">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
+                {filteredStudents.map((student, index) => (
+                  <StudentCard
+                    key={student.id}
+                    student={student}
+                    onClick={() => handleStudentClick(student)}
+                    index={index}
+                  />
+                ))}
+              </div>
+              
+              {filteredStudents.length === 0 && (
+                <div className="glass-card p-8 sm:p-12 md:p-16 rounded-xl md:rounded-2xl text-center mt-6">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-muted/50 flex items-center justify-center mx-auto mb-4 sm:mb-6">
                     <MagnifyingGlass className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-muted-foreground" weight="light" />
                   </div>

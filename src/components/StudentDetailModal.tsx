@@ -8,7 +8,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { User, Envelope, Phone, IdentificationCard, GraduationCap } from '@phosphor-icons/react';
+import { User, Envelope, Phone, IdentificationCard, GraduationCap, FileText } from '@phosphor-icons/react';
 
 interface StudentDetailModalProps {
   student: Student | null;
@@ -123,6 +123,22 @@ export function StudentDetailModal({ student, open, onOpenChange }: StudentDetai
                 </p>
               </div>
             </div>
+
+            {student.source && student.source !== '-' && (
+              <div className="flex items-start gap-2.5 sm:gap-3 group">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center transition-all duration-300 group-active:scale-95 sm:group-hover:scale-110 group-hover:shadow-md">
+                  <FileText className="w-5 h-5 text-primary" weight="duotone" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1 sm:mb-1.5">
+                    แหล่งข้อมูล
+                  </p>
+                  <p className="text-xs sm:text-sm text-foreground break-words">
+                    {student.source}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </DialogContent>

@@ -1,5 +1,6 @@
 export interface Student {
   id: number;
+  orderNumber: number;
   studentId: string;
   fullName: string;
   nickname: string;

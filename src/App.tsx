@@ -26,7 +26,8 @@ function App() {
           student.nickname.toLowerCase().includes(query) ||
           student.studentId.includes(query) ||
           student.email.toLowerCase().includes(query) ||
-          student.phone.includes(query)
+          student.phone.includes(query) ||
+          student.orderNumber.toString().includes(query)
         );
       });
   }, [selectedClassroom, searchQuery]);
@@ -67,7 +68,7 @@ function App() {
                   <MagnifyingGlass className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
                   <Input
                     type="text"
-                    placeholder="ค้นหาด้วยชื่อ ชื่อเล่น เลขประจำตัว อีเมล หรือเบอร์โทร"
+                    placeholder="ค้นหาด้วย เลขที่ ชื่อ ชื่อเล่น เลขประจำตัว อีเมล หรือเบอร์โทร"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-12 h-12 md:h-14 text-base bg-background/60 border-border/50 backdrop-blur-sm focus:bg-background transition-colors"

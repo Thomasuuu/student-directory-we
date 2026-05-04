@@ -33,6 +33,15 @@ export function StudentCard({ student, onClick, index }: StudentCardProps) {
         
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300" />
         
+        <div className="absolute top-3 left-3">
+          <Badge 
+            variant="default" 
+            className="bg-primary text-primary-foreground font-semibold text-sm backdrop-blur-md border-0 shadow-lg px-3 py-1"
+          >
+            เลขที่ {student.orderNumber}
+          </Badge>
+        </div>
+
         <div className="absolute top-3 right-3">
           <Badge 
             variant="secondary" 

@@ -56,6 +56,20 @@ export function StudentDetailModal({ student, open, onOpenChange }: StudentDetai
           <div className="space-y-4">
             <div className="flex items-start gap-3 group">
               <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-md">
+                <GraduationCap className="w-5 h-5 text-primary" weight="duotone" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1.5">
+                  เลขที่
+                </p>
+                <p className="text-2xl font-bold text-primary">
+                  {student.orderNumber}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 group">
+              <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-md">
                 <IdentificationCard className="w-5 h-5 text-primary" weight="duotone" />
               </div>
               <div className="flex-1 min-w-0">

@@ -1,134 +1,127 @@
 # Planning Guide
 
-A modern, minimal student roster management system for Angthong Pattamarot Wittayakom School, enabling easy browsing and searching of student information across multiple classes.
+ระบบค้นหาและแสดงรายชื่อนักเรียนโรงเรียนอ่างทองปัทมโรจน์วิทยาคม — แพลตฟอร์มสำหรับดูข้อมูลนักเรียนแบบเรียบง่ายและสวยงาม
 
-**Experience Qualities**:
-1. **Clean** - Uncluttered interface with generous white space that prioritizes readability and visual hierarchy
-2. **Efficient** - Quick access to student information through intuitive filtering and search functionality
-3. **Professional** - Polished, academic aesthetic that reflects the institutional context while feeling contemporary
+**Experience Qualities**: 
+1. **Clean** — อินเทอร์เฟซที่โล่งสบายตา ไม่รกรุงรัง เน้นเนื้อหาหลัก
+2. **Fluid** — การนำทางและการโต้ตอบที่ราบรื่น ใช้งานง่าย
+3. **Professional** — ดูน่าเชื่อถือและเป็นมืออาชีพ เหมาะกับสถาบันการศึกษา
 
-**Complexity Level**: Light Application (multiple features with basic state)
-This is a data browsing application with filtering, search, and detail views - requiring state management for filters and student selection but no complex workflows or data mutations.
+**Complexity Level**: Light Application (multiple features with basic state) — เป็นแอปค้นหาและแสดงข้อมูลนักเรียนที่มีการกรองตามห้องเรียนและค้นหา พร้อม modal สำหรับแสดงรายละเอียด
 
 ## Essential Features
 
-### Class Filter Tabs
-- **Functionality**: Switch between different classroom rosters (ม.4/6, ม.4/7, ม.5/6, ม.5/7)
-- **Purpose**: Organize students by their assigned classrooms for easy navigation
-- **Trigger**: User clicks on a class tab
-- **Progression**: User lands on page with default class selected → clicks different class tab → student list updates to show selected class → student count updates
-- **Success criteria**: List displays only students from selected class, active tab is visually distinct, smooth transition between classes
+### 1. Classroom Filtering
+- **Functionality**: เลือกดูนักเรียนตามห้องเรียน (ม.4/5, ม.4/6, ม.4/7, ม.5/5, ม.5/6, ม.5/7)
+- **Purpose**: ให้ผู้ใช้สามารถกรองข้อมูลนักเรียนตามห้องที่ต้องการได้ง่าย
+- **Trigger**: คลิกที่ tab ห้องเรียน
+- **Progression**: เลือกห้อง → ระบบกรองข้อมูล → แสดงนักเรียนในห้องนั้น
+- **Success criteria**: การสลับห้องเรียนทำงานได้ทันที ข้อมูลถูกต้อง แสดงจำนวนนักเรียนที่พบ
 
-### Student Search
-- **Functionality**: Real-time search filtering by name, nickname, student ID, or contact information
-- **Purpose**: Enable quick lookup of specific students without manual scrolling
-- **Trigger**: User types in search input field
-- **Progression**: User focuses search field → types query → list filters in real-time → results update with each keystroke → empty state shows when no matches
-- **Success criteria**: Search matches across all text fields, results appear instantly, search works within selected class filter
+### 2. Search System
+- **Functionality**: ค้นหานักเรียนจากชื่อ ชื่อเล่น เลขประจำตัว อีเมล หรือเบอร์โทร
+- **Purpose**: ให้ผู้ใช้สามารถหานักเรียนที่ต้องการได้รวดเร็ว
+- **Trigger**: พิมพ์ในช่องค้นหา
+- **Progression**: พิมพ์คำค้นหา → real-time filtering → แสดงผลลัพธ์ที่ตรงกัน
+- **Success criteria**: ค้นหาทำงานแบบ real-time ไม่มี lag รองรับภาษาไทยและอังกฤษ
 
-### Student List Display
-- **Functionality**: Scrollable grid/list of student cards showing key information
-- **Purpose**: Present student roster in an organized, scannable format
-- **Trigger**: Automatic on page load and filter changes
-- **Progression**: Page loads → default class roster displays → cards show student photos, names, nicknames → user scrolls to browse → clicks card for details
-- **Success criteria**: All students render with complete information, photos load properly, layout is responsive, student number badges are visible
+### 3. Student Grid Display
+- **Functionality**: แสดงการ์ดนักเรียนในรูปแบบ grid พร้อมรูปภาพ ชื่อ และข้อมูลพื้นฐาน
+- **Purpose**: แสดงข้อมูลนักเรียนหลายคนพร้อมกันในรูปแบบที่เข้าใจง่าย
+- **Trigger**: เลือกห้องเรียนหรือค้นหา
+- **Progression**: โหลดข้อมูล → แสดง grid responsive → stagger animation
+- **Success criteria**: การ์ดแสดงข้อมูลครบถ้วน responsive ทุก breakpoint มี hover effects ที่ลื่นไหล
 
-### Student Detail View
-- **Functionality**: Expandable modal or detail panel showing full student information
-- **Purpose**: Provide complete student details without cluttering the main list view
-- **Trigger**: User clicks on a student card
-- **Progression**: User clicks student card → detail view opens → displays full information (name, nickname, email, phone, student ID, photo) → user reviews → closes detail view
-- **Success criteria**: All fields display correctly, missing data shows placeholder, modal is easy to dismiss, photo displays at larger size
+### 4. Student Detail Modal
+- **Functionality**: แสดงข้อมูลนักเรียนแบบละเอียดใน modal
+- **Purpose**: ให้ผู้ใช้เห็นข้อมูลเต็มรูปแบบโดยไม่ต้องออกจากหน้า
+- **Trigger**: คลิกที่การ์ดนักเรียน
+- **Progression**: คลิกการ์ด → modal เปิดพร้อม animation → แสดงข้อมูลครบถ้วน → ปิด modal
+- **Success criteria**: modal เปิด/ปิดได้ราบรื่น แสดงข้อมูลครบ รองรับการปิดด้วย ESC และคลิกนอก modal
 
 ## Edge Case Handling
 
-- **Missing Data** - Display placeholder text (e.g., "ไม่ระบุ" or "-") for empty fields rather than leaving blank
-- **Image Loading Failures** - Show default avatar icon when student photo fails to load
-- **No Search Results** - Display friendly empty state message suggesting to try different search terms
-- **Empty Class Roster** - Show message if a class has no students (though unlikely with current data)
-- **Long Names or Text** - Truncate with ellipsis and show full text on hover or in detail view
-- **Mobile Responsiveness** - Adapt grid to single column on small screens, ensure touch targets are adequate
+- **No Search Results** — แสดงข้อความ empty state ที่เป็นมิตร พร้อมแนะนำให้ลองคำค้นหาอื่น
+- **Missing Student Data** — แสดง fallback avatar และข้อความ "ไม่ระบุ" สำหรับข้อมูลที่ขาดหาย
+- **Image Loading Failure** — ใช้ avatar placeholder พร้อมไอคอน user
+- **Long Names** — ใช้ line-clamp เพื่อไม่ให้ชื่อยาวทำลาย layout
+- **Mobile Navigation** — รองรับ safe area สำหรับ iOS และ bottom nav ที่เข้าถึงง่าย
 
 ## Design Direction
 
-The design should evoke academic professionalism with a youthful, approachable energy. It should feel like a modern digital yearbook - clean, organized, and pleasant to browse. The interface should be calming and focused, avoiding unnecessary visual noise while maintaining enough personality to feel engaging rather than sterile.
+ดีไซน์ควรให้ความรู้สึก **สะอาด โปร่งใส ทันสมัย** แบบ Liquid Glass UI — ใช้กระจกฝ้า (frosted glass) ที่โปร่งแสง ลอยอยู่บนพื้นหลังที่นุ่มนวล เน้นความเรียบง่ายแต่มีรายละเอียดที่ประณีต เหมาะกับผู้ใช้ที่เป็นนักเรียนและครู ต้องดูเป็นมืออาชีพและน่าเชื่อถือ
 
 ## Color Selection
 
-A soft, warm academic palette with subtle Thai cultural influences through warm earth tones and sophisticated neutrals.
+**Liquid Glass UI with Soft Green-White Holographic Background**
 
-- **Primary Color**: Deep Teak Brown `oklch(0.35 0.06 55)` - Communicates stability, tradition, and academic authority with warmth
+- **Primary Color**: `oklch(0.65 0.20 160)` — เขียวสดใสแบบ teal ที่ดูสดใสและเป็นมิตร สื่อถึงความสดชื่นและเทคโนโลยี
 - **Secondary Colors**: 
-  - Soft Sage `oklch(0.88 0.02 145)` - Supporting background color for subtle differentiation
-  - Warm Beige `oklch(0.95 0.01 85)` - Card backgrounds and secondary surfaces
-- **Accent Color**: Terracotta Orange `oklch(0.65 0.15 45)` - Attention-grabbing for active states, buttons, and important elements
+  - `oklch(0.92 0.08 200)` — เขียวฟ้าอ่อนมากสำหรับพื้นรอง
+  - `oklch(0.75 0.15 280)` — indigo/blue สำหรับ accent
+- **Accent Color**: `oklch(0.75 0.15 280)` — น้ำเงินม่วงสำหรับเน้นหัวข้อและ gradient
 - **Foreground/Background Pairings**:
-  - Primary on Background (White): `oklch(0.35 0.06 55)` on `oklch(1 0 0)` - Ratio 8.2:1 ✓
-  - Accent on Background: `oklch(0.65 0.15 45)` on `oklch(1 0 0)` - Ratio 4.9:1 ✓
-  - Foreground on Warm Beige: `oklch(0.25 0.02 55)` on `oklch(0.95 0.01 85)` - Ratio 11.5:1 ✓
+  - Background `oklch(0.98 0.01 180)` (ขาวอมเขียวจางมาก): Foreground `oklch(0.15 0.02 240)` (เขียวอมดำ) - Ratio 12.4:1 ✓
+  - Primary `oklch(0.65 0.20 160)`: White text `oklch(0.98 0.01 180)` - Ratio 4.9:1 ✓
+  - Accent `oklch(0.75 0.15 280)`: Foreground `oklch(0.15 0.02 240)` - Ratio 7.2:1 ✓
 
 ## Font Selection
 
-Typography should balance readability with personality - professional enough for institutional use but contemporary enough to feel modern and engaging.
+ใช้ **Inter** เป็นหลัก — เป็น modern sans-serif ที่อ่านง่าย มีความชัดเจน และรองรับภาษาไทยได้ดี สื่อถึงความทันสมัยและเป็นมืออาชีพ
 
-- **Primary Font**: Noto Sans Thai (for Thai text) + Inter (for English/numbers) - Clean, highly legible, excellent Thai script support
 - **Typographic Hierarchy**:
-  - H1 (App Title): Noto Sans Thai Semi-Bold / 32px / tight tracking / primary color
-  - H2 (Section Headers): Noto Sans Thai Medium / 20px / normal tracking
-  - Body (Student Names): Noto Sans Thai Regular / 16px / relaxed line-height (1.6)
-  - Small (Labels/Meta): Inter Medium / 13px / wide tracking (0.02em) / uppercase / muted color
-  - Numbers (Student ID): Inter Mono Regular / 14px / tabular numbers
+  - H1 (Hero Title): Inter Bold / 36-56px / -0.02em letter-spacing / line-height 1.1
+  - H2 (Section Title): Inter SemiBold / 24-32px / -0.01em / line-height 1.2
+  - H3 (Card Title): Inter SemiBold / 18-20px / normal / line-height 1.3
+  - Body Text: Inter Regular / 14-16px / normal / line-height 1.6
+  - Caption: Inter Regular / 12-14px / normal / line-height 1.4 / text-muted-foreground
+  - Badge/Label: Inter Medium / 11-13px / 0.01em / uppercase
 
 ## Animations
 
-Animations should feel lightweight and purposeful - subtle enough to not slow down browsing but present enough to provide satisfying feedback and spatial orientation.
-
-- **Card Hover**: Subtle lift (2px translate-y) with soft shadow expansion (150ms ease-out)
-- **Filter Transitions**: Smooth fade + slight slide-up (300ms) when switching classes
-- **Modal Entry**: Scale from 0.95 + fade in (250ms cubic-bezier) with backdrop fade
-- **Search Filtering**: Staggered fade-in for results (50ms delay between items)
-- **Loading States**: Gentle skeleton pulse for image loading placeholders
+**Subtle และ purposeful** — ใช้ animation เพื่อเพิ่มความรู้สึกว่าอินเทอร์เฟซมีชีวิต แต่ไม่รบกวนการใช้งาน:
+- Stagger fade-in สำหรับการ์ดนักเรียนเมื่อโหลดครั้งแรก (delay 50ms ต่อการ์ด)
+- Scale + shadow transition เมื่อ hover การ์ด (scale 1.02, duration 300ms)
+- Smooth modal open/close animation ด้วย framer-motion (fade + scale)
+- Backdrop blur fade เมื่อเปิด modal
+- Glass card ลอยขึ้นเล็กน้อยเมื่อ hover
 
 ## Component Selection
 
 - **Components**:
-  - Tabs (Shadcn) - For class filtering with custom styling for pill-style appearance
-  - Card (Shadcn) - Student cards with hover states and click interactions
-  - Dialog (Shadcn) - Student detail modal view
-  - Input (Shadcn) - Search field with icon
-  - Avatar (Shadcn) - Student photos with fallback states
-  - Badge (Shadcn) - Student number indicators on cards
-  - Skeleton (Shadcn) - Loading states for images
+  - `Tabs` — สำหรับสลับห้องเรียน แบบ pill style พร้อม glass background
+  - `Input` — ช่องค้นหาพร้อมไอคอน MagnifyingGlass ด้านซ้าย
+  - `Card` — การ์ดนักเรียน custom glass style
+  - `Dialog` — modal สำหรับแสดงรายละเอียดนักเรียน
+  - `Avatar` — แสดงรูปนักเรียนพร้อม fallback
+  - `Badge` — แสดงเลขประจำตัวและห้องเรียน
+  - `Separator` — แบ่งส่วนใน modal
 
 - **Customizations**:
-  - Custom student card component with photo, gradient overlay, and information layout
-  - Thai-language empty state illustrations/messages
-  - Custom grid layout with responsive columns (4 columns → 3 → 2 → 1)
+  - Custom `GlassCard` component — card พร้อม backdrop-blur, subtle border, และ shadow
+  - Custom particle background — canvas particles ที่เคลื่อนไหวนุ่มนวล
+  - Custom hero gradient background — holographic white-green gradient
 
 - **States**:
-  - Cards: default, hover (elevated), active (pressed), loading (skeleton)
-  - Tabs: inactive (muted), active (accent background), hover (subtle highlight)
-  - Search: empty, focused (ring), populated, no results
-  - Images: loading (skeleton), loaded, error (fallback icon)
+  - Cards: default → hover (scale + shadow) → active (click feedback)
+  - Tabs: inactive (muted) → hover (secondary bg) → active (primary bg)
+  - Input: default → focus (ring primary)
+  - Modal: closed → opening (fade + scale in) → open → closing (fade + scale out)
 
 - **Icon Selection**:
-  - MagnifyingGlass (search input)
-  - User (avatar fallback)
-  - Phone (contact information)
-  - Envelope (email)
-  - IdentificationCard (student ID)
-  - X (close modal)
+  - `GraduationCap` (duotone) — hero header
+  - `MagnifyingGlass` — search input และ empty state
+  - `User` (duotone) — avatar fallback
+  - `Envelope`, `Phone`, `IdentificationCard` (duotone) — ข้อมูลนักเรียนใน modal
 
 - **Spacing**:
-  - Page padding: px-6 md:px-12 lg:px-24
-  - Section gaps: gap-8 to gap-12
-  - Card padding: p-6
-  - Grid gap: gap-4 md:gap-6
-  - Component spacing: space-y-4 for vertical stacks
+  - Container: `max-w-7xl mx-auto px-6 md:px-12 lg:px-24`
+  - Section gaps: `gap-6 md:gap-8`
+  - Grid gaps: `gap-4 md:gap-6`
+  - Card padding: `p-4 md:p-6`
 
 - **Mobile**:
-  - Grid: 4 columns desktop → 3 tablet → 2 small tablet → 1 mobile
-  - Tabs: Scrollable horizontal on mobile with snap points
-  - Search: Full-width on mobile with adequate touch target (44px min)
-  - Modal: Full-screen on mobile with slide-up animation
-  - Cards: Larger touch targets (minimum 48px) with increased padding
+  - Grid: 1 column (< sm) → 2 columns (sm-md) → 3 columns (md-lg) → 4 columns (lg+)
+  - Search bar: full width มี larger touch targets (h-12)
+  - Tabs: scroll horizontal บนมือถือหากจำเป็น
+  - Modal: full screen บนมือถือเล็ก responsive padding

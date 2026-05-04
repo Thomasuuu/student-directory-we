@@ -42,22 +42,6 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
         
         <div className="relative">
-          <header className="glass-card mx-6 mt-6 md:mx-12 lg:mx-24 md:mt-8 p-8 md:p-12 rounded-2xl md:rounded-3xl">
-            <div className="max-w-7xl mx-auto">
-              <div className="flex items-center gap-4 mb-3">
-                <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <GraduationCap className="w-7 h-7 md:w-8 md:h-8 text-primary-foreground" weight="duotone" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground mb-1">ระบบรายชื่อนักเรียน</h1>
-                  <p className="text-sm md:text-base text-muted-foreground">
-                    โรงเรียนอ่างทองปัทมโรจน์วิทยาคม
-                  </p>
-                </div>
-              </div>
-            </div>
-          </header>
-
           <main className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-8 md:py-12">
             <div className="space-y-6 md:space-y-8">
               <div className="glass-card p-6 md:p-8 rounded-2xl space-y-6">

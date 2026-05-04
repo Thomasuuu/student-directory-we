@@ -43,20 +43,20 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
         
         <div className="relative">
-          <main className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-8 md:py-12">
-            <div className="space-y-6 md:space-y-8">
-              <div className="glass-card p-6 md:p-8 rounded-2xl space-y-6">
+          <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-12 py-4 sm:py-6 md:py-8">
+            <div className="space-y-3 sm:space-y-4 md:space-y-6">
+              <div className="glass-card p-3 sm:p-4 md:p-6 rounded-xl md:rounded-2xl space-y-3 sm:space-y-4 md:space-y-6">
                 <Tabs 
                   value={selectedClassroom} 
                   onValueChange={(value) => setSelectedClassroom(value as Classroom)}
                   className="w-full"
                 >
-                  <TabsList className="w-full grid grid-cols-3 lg:grid-cols-6 h-auto p-1.5 bg-secondary/50 backdrop-blur-sm gap-1.5">
+                  <TabsList className="w-full grid grid-cols-3 lg:grid-cols-6 h-auto p-1 sm:p-1.5 bg-secondary/50 backdrop-blur-sm gap-1 sm:gap-1.5">
                     {CLASSROOMS.map(classroom => (
                       <TabsTrigger
                         key={classroom}
                         value={classroom}
-                        className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm text-sm md:text-base py-2.5 md:py-3 rounded-xl font-medium transition-all duration-200"
+                        className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm text-xs sm:text-sm md:text-base py-2 sm:py-2.5 md:py-3 rounded-lg sm:rounded-xl font-medium transition-all duration-200"
                       >
                         {classroom}
                       </TabsTrigger>
@@ -65,25 +65,19 @@ function App() {
                 </Tabs>
 
                 <div className="relative">
-                  <MagnifyingGlass className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
+                  <MagnifyingGlass className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground pointer-events-none" />
                   <Input
                     type="text"
-                    placeholder="ค้นหาด้วย เลขที่ ชื่อ ชื่อเล่น เลขประจำตัว อีเมล หรือเบอร์โทร"
+                    placeholder="ค้นหาด้วย เลขที่ ชื่อ ชื่อเล่น อีเมล หรือเบอร์โทร"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-12 h-12 md:h-14 text-base bg-background/60 border-border/50 backdrop-blur-sm focus:bg-background transition-colors"
+                    className="pl-10 sm:pl-12 h-10 sm:h-12 md:h-14 text-sm sm:text-base bg-background/60 border-border/50 backdrop-blur-sm focus:bg-background transition-colors"
                   />
-                </div>
-
-                <div className="flex items-center justify-between pt-2">
-                  <p className="text-sm md:text-base text-muted-foreground">
-                    พบ <span className="font-semibold text-primary">{filteredStudents.length}</span> คน
-                  </p>
                 </div>
               </div>
 
               {filteredStudents.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
                   {filteredStudents.map((student, index) => (
                     <StudentCard
                       key={student.id}
@@ -94,14 +88,14 @@ function App() {
                   ))}
                 </div>
               ) : (
-                <div className="glass-card p-12 md:p-16 rounded-2xl text-center">
-                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-muted/50 flex items-center justify-center mx-auto mb-6">
-                    <MagnifyingGlass className="w-10 h-10 md:w-12 md:h-12 text-muted-foreground" weight="light" />
+                <div className="glass-card p-8 sm:p-12 md:p-16 rounded-xl md:rounded-2xl text-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-muted/50 flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                    <MagnifyingGlass className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-muted-foreground" weight="light" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-foreground mb-2">
                     ไม่พบข้อมูล
                   </h3>
-                  <p className="text-sm md:text-base text-muted-foreground">
+                  <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
                     ลองค้นหาด้วยคำอื่นหรือเปลี่ยนห้องเรียน
                   </p>
                 </div>

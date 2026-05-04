@@ -31,25 +31,24 @@ export function StudentCard({ student, onClick, index }: StudentCardProps) {
           </AvatarFallback>
         </Avatar>
         
+        <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
+          <Badge 
+            variant="default" 
+            className="bg-primary text-primary-foreground font-bold text-lg sm:text-xl md:text-2xl backdrop-blur-md border-0 shadow-lg px-3 py-1.5 sm:px-4 sm:py-2"
+          >
+            {student.orderNumber}
+          </Badge>
+        </div>
+        
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300" />
         
-        <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 md:p-4 flex items-end justify-between gap-2">
-          <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-xs sm:text-sm md:text-base leading-tight mb-0.5 sm:mb-1 line-clamp-2 text-background">
-              {student.fullName}
-            </h3>
-            <p className="text-[10px] sm:text-xs md:text-sm text-background/90 font-medium line-clamp-1">
-              {student.nickname !== '-' ? student.nickname : 'ไม่ระบุ'}
-            </p>
-          </div>
-          <div className="flex-shrink-0">
-            <Badge 
-              variant="default" 
-              className="bg-primary text-primary-foreground font-bold text-sm sm:text-base md:text-lg backdrop-blur-md border-0 shadow-lg px-2.5 py-1 sm:px-3 sm:py-1.5"
-            >
-              {student.orderNumber}
-            </Badge>
-          </div>
+        <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 md:p-4">
+          <h3 className="font-semibold text-xs sm:text-sm md:text-base leading-tight mb-0.5 sm:mb-1 line-clamp-2 text-background">
+            {student.fullName}
+          </h3>
+          <p className="text-[10px] sm:text-xs md:text-sm text-background/90 font-medium line-clamp-1">
+            {student.nickname !== '-' ? student.nickname : 'ไม่ระบุ'}
+          </p>
         </div>
       </div>
     </motion.div>

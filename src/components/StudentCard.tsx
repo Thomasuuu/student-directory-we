@@ -1,6 +1,5 @@
 import { Student } from '@/lib/types';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
 import { User } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 
@@ -31,16 +30,13 @@ export function StudentCard({ student, onClick, index }: StudentCardProps) {
           </AvatarFallback>
         </Avatar>
         
-        <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
-          <Badge 
-            variant="default" 
-            className="bg-primary text-primary-foreground font-bold text-lg sm:text-xl md:text-2xl backdrop-blur-md border-0 shadow-lg px-3 py-1.5 sm:px-4 sm:py-2"
-          >
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent [mask-image:linear-gradient(to_top,black_40%,transparent_75%)] opacity-90 group-hover:opacity-95 transition-opacity duration-300" />
+
+        <div className="absolute top-3 right-3 z-10">
+          <span className="flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-white/85 backdrop-blur-sm text-slate-700 text-[10px] font-semibold tabular-nums leading-none select-none">
             {student.orderNumber}
-          </Badge>
+          </span>
         </div>
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300" />
         
         <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 md:p-4">
           <h3 className="font-semibold text-xs sm:text-sm md:text-base leading-tight mb-0.5 sm:mb-1 line-clamp-2 text-background">

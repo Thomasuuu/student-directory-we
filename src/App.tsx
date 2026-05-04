@@ -5,9 +5,9 @@ import { StudentCard } from '@/components/StudentCard';
 import { StudentDetailModal } from '@/components/StudentDetailModal';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { MagnifyingGlass, GraduationCap } from '@phosphor-icons/react';
+import { MagnifyingGlass } from '@phosphor-icons/react';
 
-const CLASSROOMS: Classroom[] = ['ม.4/5', 'ม.4/6', 'ม.4/7', 'ม.5/5', 'ม.5/6', 'ม.5/7'];
+const CLASSROOMS: Classroom[] = ['ม.4/5', 'ม.4/6', 'ม.4/7', 'ม.4/9', 'ม.5/5', 'ม.5/6', 'ม.5/7', 'ม.5/9'];
 
 function App() {
   const [selectedClassroom, setSelectedClassroom] = useState<Classroom>('ม.5/7');
@@ -51,7 +51,7 @@ function App() {
                   onValueChange={(value) => setSelectedClassroom(value as Classroom)}
                   className="w-full"
                 >
-                  <TabsList className="w-full grid grid-cols-3 lg:grid-cols-6 h-auto p-1 sm:p-1.5 bg-secondary/50 backdrop-blur-sm gap-1 sm:gap-1.5">
+                  <TabsList className="w-full grid grid-cols-4 lg:grid-cols-8 h-auto p-1 sm:p-1.5 bg-secondary/50 backdrop-blur-sm gap-1 sm:gap-1.5">
                     {CLASSROOMS.map(classroom => (
                       <TabsTrigger
                         key={classroom}

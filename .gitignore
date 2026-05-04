@@ -32,3 +32,9 @@ pids
 .devcontainer/
 
 .spark-workbench-id
+
+# Local agent skill installs
+.agents/
+.claude/
+.kiro/
+skills-lock.json

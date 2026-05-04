@@ -49,9 +49,7 @@ function App() {
                   <GraduationCap className="w-7 h-7 md:w-8 md:h-8 text-primary-foreground" weight="duotone" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground mb-1">
-                    ระบบรายชื่อนักเรียน
-                  </h1>
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground mb-1">ระบบรายชื่อนักเรียน</h1>
                   <p className="text-sm md:text-base text-muted-foreground">
                     โรงเรียนอ่างทองปัทมโรจน์วิทยาคม
                   </p>
@@ -127,7 +125,6 @@ function App() {
           </main>
         </div>
       </div>
-
       <StudentDetailModal
         student={selectedStudent}
         open={isModalOpen}

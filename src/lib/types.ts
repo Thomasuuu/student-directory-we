@@ -7,6 +7,7 @@ export interface Student {
   email: string;
   phone: string;
   photoUrl: string;
+  source?: string;
   classroom: Classroom;
 }
 
